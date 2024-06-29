@@ -20,6 +20,8 @@ const config: Config = {
           "linear-gradient( to bottom, hsl(230, 89%, 62%),  hsl(230, 89%, 65%))",
         "rock-gradient":
           "linear-gradient( to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%))",
+        radial:
+          "radial-gradient(circle at center, hsl(214, 47%, 23%), hsl(237, 49%, 15%))",
       },
       boxShadow: {
         "circle-shadow": "inset 0 2px 10px 3px rgba(0, 0, 0, 0.2);",
