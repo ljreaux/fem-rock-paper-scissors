@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Semi_Condensed } from "next/font/google";
 import "./globals.css";
+import { Modal } from "@/components/RulesButton";
 
 const barlow = Barlow_Semi_Condensed({
   weight: ["600", "700"],
@@ -20,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={barlow.className}>{children}</body>
+      <body className={barlow.className}>
+        {children}
+        <Modal />
+      </body>
     </html>
   );
 }
