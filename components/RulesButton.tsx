@@ -8,7 +8,7 @@ const RulesButton = () => {
   return (
     <Link
       href="?modal=true"
-      className="text-white border-2 border-white/[0.5] tracking-[.3rem] rounded-xl px-12 py-3 text-xl font-light ml-auto"
+      className="text-white border-2 border-white/[0.5] tracking-[.3rem] rounded-xl px-12 py-3 text-xl font-light md:ml-auto"
     >
       <button>RULES</button>
     </Link>
@@ -26,12 +26,12 @@ export const Modal = () => {
     <>
       {modal && (
         <dialog className="fixed left-0 top-0 w-full h-full bg-black bg-opacity-50 z-50 overflow-auto flex justify-center items-center">
-          <div className="bg-white m-auto p-8 w-[75%] rounded-lg">
-            <div className="flex items-center justify-between">
+          <div className="bg-white m-auto p-8 sm:w-[75%] sm:h-auto w-full h-full sm:rounded-lg">
+            <div className="flex flex-col sm:flex-row items-center justify-between">
               <p className="text-4xl font-bold">RULES</p>
               <Link
                 href={pathname}
-                className="flex items-center justify-center"
+                className=" items-center justify-center sm:flex sm:static absolute bottom-[20vh]"
               >
                 <button type="button">
                   <Image

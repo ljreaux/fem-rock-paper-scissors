@@ -6,7 +6,7 @@ import GameContextProvider from "@/context/GameContextProvider";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center sm:p-24 p-12">
       <GameContextProvider>
         <Header />
         <RPSContainer />

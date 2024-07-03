@@ -18,16 +18,17 @@ export const RPSButton = ({
       className={`bg-${imageType}-gradient rounded-full shadow-outside-shadow ${containerStyles}`}
     >
       <button
-        className={`bg-white p-8 rounded-full m-4 shadow-circle-shadow`}
+        className={`bg-white md:p-8 p-4 rounded-full m-4 shadow-circle-shadow`}
         onClick={() => setPlayerChoice(imageType)}
         disabled={disabled}
       >
-        <Image
-          src={`images/icon-${imageType}.svg`}
-          alt={`${imageType}`}
-          width={50}
-          height={50}
-        />
+        <div className="md:w-[60px] md:h-[60px] w-[50px] h-[50px] relative">
+          <Image
+            src={`images/icon-${imageType}.svg`}
+            alt={`${imageType}`}
+            fill
+          />
+        </div>
       </button>
     </div>
   );
@@ -47,8 +48,8 @@ export const RPSContainer = () => {
   if (!reveal) {
     return (
       <div
-        className={`w-full flex relative h-[700px] ${
-          playerChoice && "items-center justify-center"
+        className={`w-full flex md:h-[500px] h-[350px] justify-center ${
+          playerChoice && "items-center"
         }`}
       >
         <>
@@ -59,7 +60,7 @@ export const RPSContainer = () => {
                 <RPSButton imageType={playerChoice || "rock"} disabled />
               </div>
 
-              <div className="flex flex-col items-center justify-center w-full h-full">
+              <div className="flex flex-col items-center justify-center w-full ">
                 <p className="text-white pb-8">THE HOUSE PICKED</p>
                 {timesUp ? (
                   <RPSButton imageType={computerChoice || "rock"} disabled />
@@ -70,25 +71,26 @@ export const RPSContainer = () => {
             </>
           ) : (
             <>
-              <Image
-                src={"/images/bg-triangle.svg"}
-                alt="bg-triangle"
-                width={500}
-                height={500}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              />
-              <RPSButton
-                imageType="rock"
-                containerStyles="absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              />
-              <RPSButton
-                imageType="paper"
-                containerStyles="absolute top-0 translate-y-1/2 left-1/2 -translate-x-[calc(250px+50%)] "
-              />
-              <RPSButton
-                imageType="scissors"
-                containerStyles="absolute top-0 translate-y-1/2 left-1/2 translate-x-[calc(250px-50%)]"
-              />
+              <div className="md:w-[500px] w-[350px] relative mb-24">
+                <Image
+                  src={"/images/bg-triangle.svg"}
+                  alt="bg-triangle"
+                  fill
+                  className="absolute "
+                />
+                <RPSButton
+                  imageType="rock"
+                  containerStyles="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
+                />
+                <RPSButton
+                  imageType="paper"
+                  containerStyles="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
+                />
+                <RPSButton
+                  imageType="scissors"
+                  containerStyles="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
+                />{" "}
+              </div>
             </>
           )}
         </>
@@ -97,14 +99,20 @@ export const RPSContainer = () => {
   }
   return (
     <div
-      className={`w-full flex relative h-[700px] items-center justify-center`}
+      className={`w-full flex relative h-[350px] mb-12 items-center md:justify-center justify-between md:flex-nowrap flex-wrap`}
     >
-      <div className="flex flex-col items-center justify-center w-full">
+      <div className="flex flex-col items-center justify-center md:w-full">
         <p className="text-white pb-8">YOU PICKED</p>
         <RPSButton imageType={playerChoice || "rock"} disabled />
       </div>
 
-      <div className="flex flex-col gap-4 justify-center items-center text-center px-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div className="flex flex-col items-center justify-center md:w-full h-full">
+        <p className="text-white pb-8">THE HOUSE PICKED</p>
+
+        <RPSButton imageType={computerChoice || "rock"} disabled />
+      </div>
+
+      <div className="flex flex-col gap-4 justify-center items-center text-center px-8 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 mx-auto -mt-16 md:mt-auto">
         <p className="text-white text-5xl">YOU {winState?.toUpperCase()}</p>
         <button
           onClick={reset}
@@ -114,12 +122,6 @@ export const RPSContainer = () => {
         >
           PLAY AGAIN
         </button>
-      </div>
-
-      <div className="flex flex-col items-center justify-center w-full h-full">
-        <p className="text-white pb-8">THE HOUSE PICKED</p>
-
-        <RPSButton imageType={computerChoice || "rock"} disabled />
       </div>
     </div>
   );
